@@ -5,12 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Animelist_CSharp_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"><!--WindowState="Maximized"-->
-    <Grid>
-		
-		<Frame x:Name="main" Width="1000" Margin="0,0,0,0" NavigationUIVisibility="Hidden" Background="White" Height="700"/>
-		<StackPanel Height="80" Margin="0,0,0,0" VerticalAlignment="Top" Background="#f4b738">
-			<Polygon Points="0,0 200,80, 0,80" StrokeThickness="0" Stroke="#FFFFFF" Fill="#FFFFFF" />
-		</StackPanel>
-	</Grid>
+        Title="MainWindow" Height="450" Width="800">
+    <!--WindowState="Maximized"-->
+    <Grid Background="#FFFFFF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#F69300" Offset="0.0" />
+                    <GradientStop Color="#FFCD63" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Grid.Row="1" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#F69300" Offset="0.0" />
+                    <GradientStop Color="#FFCD63" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Fill="#F69300"></Rectangle>
+        <Rectangle Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Fill="#FFCD63"></Rectangle>
+        <Image Grid.Column="1" Grid.Row="0" RenderOptions.BitmapScalingMode="Fant" Source="./img/Logo.png" VerticalAlignment="Top" Height="56" />
+
+        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="ExtraBold" Grid.Row="1" Grid.Column="1" Text="Login" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Margin="0,17,0,0"/>
+        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Text="Username" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Margin="-50,117,0,0"/>
+        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Text="Password" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Margin="-53,180,0,0"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Width="120" Height="25" Margin="0,140,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Width="120" Height="25" Margin="0,205,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Button Content="Login" FontFamily="./fonts/#Bryant" FontWeight="Thin" BorderBrush="#FFCD63" Background="#FCBA43" Grid.Row="1" Grid.Column="1" Width="120" Height="25" Margin="0,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+        </Button>
+    </Grid>
 </Window>
