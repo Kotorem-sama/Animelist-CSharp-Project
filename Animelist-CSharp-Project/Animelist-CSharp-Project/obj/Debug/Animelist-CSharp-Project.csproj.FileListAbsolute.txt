@@ -1,0 +1,15 @@
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\bin\Debug\Animelist-CSharp-Project.exe.config
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\bin\Debug\Animelist-CSharp-Project.exe
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\bin\Debug\Animelist-CSharp-Project.pdb
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.csproj.AssemblyReference.cache
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\MainWindow.g.cs
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\App.g.cs
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project_MarkupCompile.cache
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project_MarkupCompile.lref
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\MainWindow.baml
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.g.resources
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist_CSharp_Project.Properties.Resources.resources
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.csproj.GenerateResource.cache
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.csproj.CoreCompileInputs.cache
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.exe
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.pdb

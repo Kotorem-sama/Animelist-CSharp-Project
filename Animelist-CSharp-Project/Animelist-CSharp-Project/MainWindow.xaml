@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Animelist_CSharp_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"><!--WindowState="Maximized"-->
     <Grid>
-        
-    </Grid>
+		
+		<Frame x:Name="main" Width="1000" Margin="0,0,0,0" NavigationUIVisibility="Hidden" Background="White" Height="700"/>
+		<StackPanel Height="80" Margin="0,0,0,0" VerticalAlignment="Top" Background="#f4b738">
+			<Polygon Points="0,0 200,80, 0,80" StrokeThickness="0" Stroke="#FFFFFF" Fill="#FFFFFF" />
+		</StackPanel>
+	</Grid>
 </Window>
