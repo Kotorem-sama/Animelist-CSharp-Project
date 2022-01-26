@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/pngegg%20(1).png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/hide-icon-png-2.png")]
 
 
