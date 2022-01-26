@@ -6,20 +6,23 @@
         xmlns:local="clr-namespace:Animelist_CSharp_Project"
         mc:Ignorable="d"
         Icon="./img/bruh.ico"
-        Title="Nyanime" Height="450" Width="800">
+        Title="Nyanime" Height="450" Width="800"
+        MinWidth="370" MinHeight="400">
     <!--WindowState="Maximized"-->
     <Grid Background="#FFFFFF">
+        <!--Grid definition-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="100*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="31*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
+        
+        <!--Borders get a color-->
         <Rectangle Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -38,14 +41,49 @@
         </Rectangle>
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Fill="#F69300"></Rectangle>
         <Rectangle Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Fill="#FFCD63"></Rectangle>
-        <Image Grid.Column="1" Grid.Row="0" RenderOptions.BitmapScalingMode="Fant" Source="./img/Logo.png" VerticalAlignment="Top" Height="56" />
 
-        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="ExtraBold" Grid.Row="1" Grid.Column="1" Text="Login" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Margin="0,17,0,0"/>
-        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Text="Username" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Margin="-50,117,0,0"/>
-        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Text="Password" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Margin="-53,180,0,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Width="120" Height="25" Margin="0,140,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Width="120" Height="25" Margin="0,205,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Button Content="Login" FontFamily="./fonts/#Bryant" FontWeight="Thin" BorderBrush="#FFCD63" Background="#FCBA43" Grid.Row="1" Grid.Column="1" Width="120" Height="25" Margin="0,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <Label Content="Your username or password is incorrect." Opacity="0" Foreground="#FF0000" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-120,0,0"/>
+
+        <!--Logo gets added-->
+        <Image Grid.Column="1" Grid.Row="0" RenderOptions.BitmapScalingMode="Fant" Source="./img/Logo.png" VerticalAlignment="Top" Height="56" />
+        
+        <!--Paw gets added-->
+        <Image Grid.Column="1" Grid.Row="1" RenderOptions.BitmapScalingMode="Fant" Source="./img/Paw.png" Opacity="0.05" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1000"/>
+
+        <!--Login title text-->
+        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="ExtraBold" Grid.Row="1" Grid.Column="1" Text="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Margin="0,-218,0,0"/>
+        
+        <!--TextBoxes for username and password-->
+        <TextBox Name="UsernameTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusUsername" GotKeyboardFocus="TextBox_GotKeyboardFocus" Grid.Row="1" Grid.Column="1" Width="240" Height="25" Margin="0,-49,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
+        <TextBox Name="PasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusPassword" GotKeyboardFocus="TextBox_GotKeyboardFocus" Text="Password" Grid.Row="1" Grid.Column="1" Width="240" Height="25" Margin="0,50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+        
+        <!--Login button-->
+        <Button Name="LoginButton" Click="Button_Click" FontSize="20" Content="Login" FontFamily="./fonts/#Bryant" Grid.Row="1" Grid.Column="1" Width="90" Height="30" Margin="0,180,0,0" Style="{DynamicResource LoginButton}" >
+            <Button.Resources>
+                <Style x:Key="LoginButton" TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="#AF7500"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="border" CornerRadius="8" BorderThickness="0" Background="#FCBA43" SnapsToDevicePixels="true">
+                                    <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsDefaulted" Value="true">
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Background" TargetName="border" Value="#F4B300"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+                                        <Setter Property="Background" TargetName="border" Value="#E9A400"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Resources>
         </Button>
     </Grid>
 </Window>
