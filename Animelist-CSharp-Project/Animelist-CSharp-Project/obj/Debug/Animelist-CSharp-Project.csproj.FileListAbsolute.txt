@@ -13,3 +13,7 @@ C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\An
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.csproj.CoreCompileInputs.cache
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.exe
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.pdb
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Homepage.g.cs
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\LoginPage.g.cs
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Homepage.baml
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\LoginPage.baml
