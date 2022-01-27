@@ -142,15 +142,7 @@ namespace Animelist_CSharp_Project
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RegisterPage());
-        }
-
-        private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                LoginButton_Click(sender, e);
-            }
+            NavigationService.Navigate(new Homepage());
         }
     }
 }

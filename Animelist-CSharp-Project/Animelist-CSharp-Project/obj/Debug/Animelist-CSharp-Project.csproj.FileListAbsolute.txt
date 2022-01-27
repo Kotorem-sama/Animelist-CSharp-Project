@@ -17,3 +17,5 @@ C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\An
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\LoginPage.g.cs
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Homepage.baml
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\LoginPage.baml
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\RegisterPage.g.cs
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\RegisterPage.baml

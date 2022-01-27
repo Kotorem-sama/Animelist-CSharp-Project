@@ -9,7 +9,23 @@
       Title="Homepage">
 
     <Grid>
-        <Label Content="Balls" FontSize="200"/>
-        
+        <!--Back button-->
+        <Button Name="ShowPasswordButton" BorderThickness="0" Click="ShowPasswordButton_Click" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
+            <!--<Image Name="ShowPasswordImage" RenderOptions.BitmapScalingMode="Fant" Source="./img/ShowPassword.png"/>-->
+            <Image RenderOptions.BitmapScalingMode="Fant" Name="ShowPasswordImage">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="./img/BackButton.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="False"/>
+                            <Trigger Property="IsFocused" Value="False" />
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Button.Background>
+                <SolidColorBrush Color="#000000" Opacity="0" />
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

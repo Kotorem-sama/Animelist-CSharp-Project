@@ -1,0 +1,102 @@
+﻿<Page x:Class="Animelist_CSharp_Project.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Animelist_CSharp_Project"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginPage">
+
+    <Grid>
+        <Label FontFamily="./fonts/#Bryant" Name="wrongData" Content="Your username or password is incorrect." Opacity="0" Foreground="#FF0000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-120,0,0"/>
+
+        <!--Paw gets added-->
+        <Image RenderOptions.BitmapScalingMode="Fant" Source="./img/CatGirlSilhouette.png" Opacity="0.05" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1000"/>
+
+        <!--Login title text-->
+        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="ExtraBold" Text="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Margin="0,-218,0,0"/>
+
+        <!--TextBoxes for username and password-->
+        <TextBox Name="UsernameTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusUsername" GotKeyboardFocus="TextBox_GotKeyboardFocus" Width="240" Height="25" Margin="0,-49,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
+        <PasswordBox Name="PasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusPassword" GotKeyboardFocus="PasswordBox_GotKeyboardFocus" Password="Password" Width="240" Height="25" Margin="0,50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+        <TextBox Visibility="Hidden" Name="PasswordTextBoxShow" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusShowPassword" GotKeyboardFocus="TextBox_GotKeyboardFocus" Text="Password" Width="240" Height="25" Margin="0,50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+
+
+        <!--Defines the show password button-->
+        <Button Name="ShowPasswordButton" BorderThickness="0" Click="ShowPasswordButtonEvent" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,51,0,0">
+            <!--<Image Name="ShowPasswordImage" RenderOptions.BitmapScalingMode="Fant" Source="./img/ShowPassword.png"/>-->
+            <Image RenderOptions.BitmapScalingMode="Fant" Name="ShowPasswordImage">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="./img/ShowPassword.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="False"/>
+                            <Trigger Property="IsFocused" Value="False" />
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Button.Background>
+                <SolidColorBrush Color="#000000" Opacity="0" />
+            </Button.Background>
+        </Button>
+
+        <!--Login button-->
+        <Button Name="LoginButton" Click="LoginButton_Click" FontSize="20" Content="Login" FontFamily="./fonts/#Bryant" Width="90" Height="30" Margin="0,180,100,0" Style="{DynamicResource LoginButton}" >
+            <Button.Resources>
+                <Style x:Key="LoginButton" TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="#AF7500"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="border" CornerRadius="8" BorderThickness="0" Background="#FCBA43" SnapsToDevicePixels="true">
+                                    <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsDefaulted" Value="true">
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Background" TargetName="border" Value="#F4B300"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+                                        <Setter Property="Background" TargetName="border" Value="#E9A400"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="RegisterButton" Click="RegisterButton_Click" FontSize="20" Content="Register" FontFamily="./fonts/#Bryant" Width="90" Height="30" Margin="100,180,0,0" Style="{DynamicResource LoginButton}" >
+            <Button.Resources>
+                <Style x:Key="LoginButton" TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="#AF7500"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="border" CornerRadius="8" BorderThickness="0" Background="#FCBA43" SnapsToDevicePixels="true">
+                                    <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsDefaulted" Value="true">
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Background" TargetName="border" Value="#F4B300"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+                                        <Setter Property="Background" TargetName="border" Value="#E9A400"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>
