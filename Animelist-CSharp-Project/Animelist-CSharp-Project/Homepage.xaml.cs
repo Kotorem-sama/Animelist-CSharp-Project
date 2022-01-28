@@ -24,5 +24,10 @@ namespace Animelist_CSharp_Project
         {
             InitializeComponent();
         }
+
+        private void ShowPasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LoginPage());
+        }
     }
 }

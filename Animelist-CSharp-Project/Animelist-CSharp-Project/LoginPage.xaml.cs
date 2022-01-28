@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.Json;
+using System.IO;
 
 namespace Animelist_CSharp_Project
 {
@@ -24,82 +26,146 @@ namespace Animelist_CSharp_Project
         {
             InitializeComponent();
         }
+        public static void checkJson()
+        {
+            try
+            {
+                People Accounts = JsonSerializer.Deserialize<People>(ReadJson("Accounts"));
+            }
+            catch
+            {
+                People Accounts = new People();
+                User AdminUser = new User("Rick", "balls");
+                Accounts.AddPerson(AdminUser);
+                JsonSerializerOptions opt = new JsonSerializerOptions { WriteIndented = true };
+                string json = JsonSerializer.Serialize(Accounts, opt);
+                WriteJson("Users", json);
+            }
+        }
+        public static void WriteJson(string filename, string content)
+        {
+            try
+            {
+                File.WriteAllText($"./json/{filename}.json", content);
+            }
+            catch
+            {
+                System.IO.Directory.CreateDirectory("./json/");
+                File.WriteAllText($"./json/{filename}.json", content);
+            }
+
+        }
+        public static string ReadJson(string filename)
+        {
+            string path = File.ReadAllText($"./json/{filename}.json");
+            return path;
+        }
+        public static void SaveToJson(string username, string password)
+        {
+            checkJson();
+            string json = ReadJson("Users");
+            People jsonPeople = People.FromJson(json);
+            User customer = new User(username, password);
+            jsonPeople.AddPerson(customer);
+            string add = jsonPeople.ToJson();
+            WriteJson("Users", add);
+        }
         private void TextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            TextBox source = e.Source as TextBox;
             var brush = new SolidColorBrush(Color.FromArgb(255, (byte)165, (byte)165, (byte)165));
-            // Change the TextBox color when it obtains focus.
-            source.Background = brush;
-
-            if (source != null && (source.Text == "Password" || source.Text == "Username"))
+            if (e.Source.GetType() == typeof(TextBox))
             {
-                // Clear the TextBox.
-                source.Clear();
+                TextBox source = e.Source as TextBox;
+                source.Background = brush;
+
+                if (source != null && (source.Text == "Password" || source.Text == "Username" || source.Text == "Email"))
+                {
+                    source.Clear();
+                }
+            }
+            else if (e.Source.GetType() == typeof(PasswordBox))
+            {
+                PasswordBox source = e.Source as PasswordBox;
+                source.Background = brush;
+
+                if (source != null && (source.Password == "Password" || source.Password == "Username"))
+                {
+                    source.Clear();
+                }
             }
         }
-        private void PasswordBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            PasswordBox source = e.Source as PasswordBox;
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)165, (byte)165, (byte)165));
-            // Change the TextBox color when it obtains focus.
-            source.Background = brush;
-
-            if (source != null && (source.Password == "Password" || source.Password == "Username"))
-            {
-                // Clear the TextBox.
-                source.Clear();
-            }
-        }
-        private void TextBox_LostKeyboardFocusUsername(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TextBox source = e.Source as TextBox;
             var brush = new SolidColorBrush(Color.FromArgb(255, (byte)201, (byte)201, (byte)201));
-            source.Background = brush;
-            source.Text = source.Text.Trim();
 
-            if (source.Text == "")
+            if (e.Source.GetType() == typeof(TextBox))
             {
-                source.Text = "Username";
+                TextBox source = e.Source as TextBox;
+                source.Background = brush;
+                source.Text = source.Text.Trim();
+                if (source.Text == "")
+                {
+                    if (source.Name == "UsernameTextBox")
+                    {
+                        source.Text = "Username";
+                    }
+                    else if (source.Name == "PasswordTextBoxShow")
+                    {
+                        source.Text = "Password";
+                    }
+                }
             }
-        }
-        private void TextBox_LostKeyboardFocusPassword(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            PasswordBox source = e.Source as PasswordBox;
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)201, (byte)201, (byte)201));
-            source.Background = brush;
-            source.Password = source.Password.Trim();
-
-            if (source.Password == "")
+            else if (e.Source.GetType() == typeof(PasswordBox))
             {
-                source.Password = "Password";
-            }
-        }
-        private void TextBox_LostKeyboardFocusShowPassword(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TextBox source = e.Source as TextBox;
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)201, (byte)201, (byte)201));
-            source.Background = brush;
-            source.Text = source.Text.Trim();
-
-            if (source.Text == "")
-            {
-                source.Text = "Password";
+                PasswordBox source = e.Source as PasswordBox;
+                source.Background = brush;
+                source.Password = source.Password.Trim();
+                if (source.Password == "" && (source.Name == "PasswordTextBox" || source.Name == "ConfirmPasswordTextBox"))
+                {
+                    source.Password = "Password";
+                }
             }
         }
         public class User
         {
             public string Username;
             public string Password;
-
             public User(string username, string password)
             {
                 this.Username = username;
                 this.Password = password;
             }
         }
+        public class People
+        {
+            public List<User> PeopleList { get; set; }
+            public void AddPerson(User personToAdd)
+            {
+                if (PeopleList == null)
+                {
+                    List<User> newPerson = new List<User>();
+                    newPerson.Add(personToAdd);
+                    PeopleList = newPerson;
+                }
+                else
+                {
+                    PeopleList.Add(personToAdd);
+                }
+            }
+            public string ToJson()
+            {
+                JsonSerializerOptions opt = new JsonSerializerOptions() { WriteIndented = true };
+                return JsonSerializer.Serialize(this, opt);
+            }
+            public static People FromJson(string json)
+            {
+                return JsonSerializer.Deserialize<People>(json);
+            }
+        }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            wrongData.Opacity = 0;
+            SaveToJson("User1", "password1");
+            SaveToJson("User2", "password2");
             User[] balls = { new User("User1", "password1"), new User("User2", "password2") };
             Boolean matchFound = false;
             for (int i = 0; i < balls.Length && matchFound == false; i++)
@@ -109,14 +175,7 @@ namespace Animelist_CSharp_Project
                     NavigationService.Navigate(new Homepage());
                 }
             }
-            if (matchFound == false)
-            {
-                wrongData.Opacity = 1;
-            }
-            if (matchFound == true)
-            {
-                wrongData.Opacity = 0;
-            }
+            if (matchFound == false) { wrongData.Opacity = 1; }
             PasswordTextBox.Password = "Password";
             PasswordTextBoxShow.Text = "Password";
         }
@@ -137,6 +196,29 @@ namespace Animelist_CSharp_Project
                 PasswordTextBoxShow.Text = PasswordTextBox.Password;
                 PasswordTextBoxShow.Visibility = Visibility.Visible;
                 PasswordTextBox.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegisterPage());
+        }
+
+        private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                GoBackPageButton_Click(sender, e);
+                LoginButton_Click(sender, e);
+            }
+        }
+
+        public void GoBackPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            int a = 0;
+            for (a = 0; NavigationService.CanGoBack; a++)
+            {
+                NavigationService.GoBack();
             }
         }
     }

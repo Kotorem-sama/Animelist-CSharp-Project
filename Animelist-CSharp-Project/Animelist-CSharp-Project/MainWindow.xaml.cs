@@ -25,6 +25,11 @@ namespace Animelist_CSharp_Project
             InitializeComponent();
             MijnFrame.Content = new LoginPage();
         }
+
+        private void ShowPasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 
