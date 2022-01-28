@@ -24,10 +24,38 @@ namespace Animelist_CSharp_Project
         {
             InitializeComponent();
         }
-
-        private void ShowPasswordButton_Click(object sender, RoutedEventArgs e)
+        public void GoBackPageButton_Click(object sender, RoutedEventArgs e)
         {
+            int a = 0;
+            for (a = 0; NavigationService.CanGoBack; a++)
+            {
+                NavigationService.GoBack();
+            }
+            Console.WriteLine(a);
+        }
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            
             NavigationService.Navigate(new LoginPage());
+        }
+        private void ShowConfirmPasswordButtonEvent(object sender, RoutedEventArgs e)
+        {
+            var converter = new ImageSourceConverter();
+            string[] path = ShowConfirmPasswordImage.Source.ToString().Split('/');
+            if (path[path.Length - 1] == "HidePassword.png")
+            {
+                ShowConfirmPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
+                ConfirmPasswordTextBox.Password = ConfirmPasswordTextBoxShow.Text;
+                ConfirmPasswordTextBoxShow.Visibility = Visibility.Hidden;
+                ConfirmPasswordTextBox.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ShowConfirmPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/HidePassword.png");
+                ConfirmPasswordTextBoxShow.Text = ConfirmPasswordTextBox.Password;
+                ConfirmPasswordTextBoxShow.Visibility = Visibility.Visible;
+                ConfirmPasswordTextBox.Visibility = Visibility.Hidden;
+            }
         }
         private void ShowPasswordButtonEvent(object sender, RoutedEventArgs e)
         {
@@ -50,77 +78,69 @@ namespace Animelist_CSharp_Project
         }
         private void TextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            TextBox source = e.Source as TextBox;
             var brush = new SolidColorBrush(Color.FromArgb(255, (byte)165, (byte)165, (byte)165));
-            // Change the TextBox color when it obtains focus.
-            source.Background = brush;
-
-            if (source != null && (source.Text == "Password" || source.Text == "Username" || source.Text == "Email"))
+            
+            if (e.Source.GetType() == typeof(TextBox))
             {
-                // Clear the TextBox.
-                source.Clear();
+                TextBox source = e.Source as TextBox;
+                source.Background = brush;
+
+                if (source != null && (source.Text == "Password" || source.Text == "Username" || source.Text == "Email"))
+                {
+                    source.Clear();
+                }
+            }
+            else if (e.Source.GetType() == typeof(PasswordBox))
+            {
+                PasswordBox source = e.Source as PasswordBox;
+                source.Background = brush;
+
+                if (source != null && (source.Password == "Password" || source.Password == "Username"))
+                {
+                    source.Clear();
+                }
             }
         }
-        private void PasswordBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            PasswordBox source = e.Source as PasswordBox;
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)165, (byte)165, (byte)165));
-            // Change the TextBox color when it obtains focus.
-            source.Background = brush;
-
-            if (source != null && (source.Password == "Password" || source.Password == "Username"))
-            {
-                // Clear the TextBox.
-                source.Clear();
-            }
-        }
-        private void TextBox_LostKeyboardFocusUsername(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TextBox source = e.Source as TextBox;
             var brush = new SolidColorBrush(Color.FromArgb(255, (byte)201, (byte)201, (byte)201));
-            source.Background = brush;
-            source.Text = source.Text.Trim();
 
-            if (source.Text == "")
+            if (e.Source.GetType() == typeof(TextBox))
             {
-                source.Text = "Username";
+                TextBox source = e.Source as TextBox;
+                source.Background = brush;
+                source.Text = source.Text.Trim();
+                if (source.Text == "")
+                {
+                    if (source.Name == "UsernameTextBox")
+                    {
+                        source.Text = "Username";
+                    }
+                    else if (source.Name == "EmailTextBox")
+                    {
+                        source.Text = "Email";
+                    }
+                    else if (source.Name == "PasswordTextBoxShow")
+                    {
+                        source.Text = "Password";
+                    }
+                }
+            }
+            else if (e.Source.GetType() == typeof(PasswordBox))
+            {
+                PasswordBox source = e.Source as PasswordBox;
+                source.Background = brush;
+                source.Password = source.Password.Trim();
+                if (source.Password == "" && (source.Name == "PasswordTextBox" || source.Name == "ConfirmPasswordTextBox"))
+                {
+                    source.Password = "Password";
+                }
             }
         }
-        private void TextBox_LostKeyboardFocusEmail(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TextBox source = e.Source as TextBox;
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)201, (byte)201, (byte)201));
-            source.Background = brush;
-            source.Text = source.Text.Trim();
 
-            if (source.Text == "")
-            {
-                source.Text = "Email";
-            }
-        }
-        private void TextBox_LostKeyboardFocusPassword(object sender, KeyboardFocusChangedEventArgs e)
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            PasswordBox source = e.Source as PasswordBox;
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)201, (byte)201, (byte)201));
-            source.Background = brush;
-            source.Password = source.Password.Trim();
-
-            if (source.Password == "")
-            {
-                source.Password = "Password";
-            }
-        }
-        private void TextBox_LostKeyboardFocusShowPassword(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TextBox source = e.Source as TextBox;
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)201, (byte)201, (byte)201));
-            source.Background = brush;
-            source.Text = source.Text.Trim();
-
-            if (source.Text == "")
-            {
-                source.Text = "Password";
-            }
+            
         }
     }
 }

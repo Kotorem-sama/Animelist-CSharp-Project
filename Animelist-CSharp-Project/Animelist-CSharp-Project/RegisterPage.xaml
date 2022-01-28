@@ -7,11 +7,37 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegisterPage">
-
+    <Page.Resources>
+        <Style x:Key="LoginButton" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="#AF7500"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="8" BorderThickness="0" Background="#FCBA43" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#F4B300"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#E9A400"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
+        <!--Paw gets added-->
+        <Image RenderOptions.BitmapScalingMode="Fant" Source="./img/CatGirlSilhouette2.png" Opacity="0.05" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1000"/>
+
         <!--Back button-->
-        <Button BorderThickness="0" Click="ShowPasswordButton_Click" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
-            <!--<Image Name="ShowPasswordImage" RenderOptions.BitmapScalingMode="Fant" Source="./img/ShowPassword.png"/>-->
+        <Button BorderThickness="0" Click="GoBackButton_Click" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
             <Image RenderOptions.BitmapScalingMode="Fant">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -30,15 +56,17 @@
 
         <!--Login title text-->
         <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="ExtraBold" Text="Register" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Margin="0,-240,0,0"/>
-
-        <TextBox Name="UsernameTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusEmail" GotKeyboardFocus="TextBox_GotKeyboardFocus" Width="240" Height="25" Margin="0,-105,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Email" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
-        <TextBox Name="EmailTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusUsername" GotKeyboardFocus="TextBox_GotKeyboardFocus" Width="240" Height="25" Margin="0,-29,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
-        <PasswordBox Name="PasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusPassword" GotKeyboardFocus="PasswordBox_GotKeyboardFocus" Password="Password" Width="240" Height="25" Margin="0,45,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
-        <TextBox Visibility="Hidden" Name="PasswordTextBoxShow" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusShowPassword" GotKeyboardFocus="TextBox_GotKeyboardFocus" Text="Password" Width="240" Height="25" Margin="0,45,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
-        <PasswordBox Name="ConfirmPasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocusPassword" GotKeyboardFocus="PasswordBox_GotKeyboardFocus" Password="Password" Width="240" Height="25" Margin="0,121,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
         
-        <!--Defines the show password button-->
-        <Button Name="ShowPasswordButton" BorderThickness="0" Click="ShowPasswordButtonEvent" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,121,0,0">
+        <!--Input boxes-->
+        <TextBox Name="EmailTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Width="240" Height="25" Margin="0,-105,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Email" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
+        <TextBox Name="UsernameTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Width="240" Height="25" Margin="0,-29,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
+        <PasswordBox Name="PasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Password="Password" Width="240" Height="25" Margin="0,45,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+        <TextBox Visibility="Hidden" Name="PasswordTextBoxShow" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Text="Password" Width="240" Height="25" Margin="0,45,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+        <PasswordBox Name="ConfirmPasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Password="Password" Width="240" Height="25" Margin="0,121,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+        <TextBox Visibility="Hidden" Name="ConfirmPasswordTextBoxShow" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Text="Password" Width="240" Height="25" Margin="0,121,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+
+        <!--Defines the show password button for the password box-->
+        <Button Name="ShowPasswordButton" BorderThickness="0" Click="ShowPasswordButtonEvent" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,45,0,0">
             <Image RenderOptions.BitmapScalingMode="Fant" Name="ShowPasswordImage">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -54,5 +82,25 @@
                 <SolidColorBrush Color="#000000" Opacity="0" />
             </Button.Background>
         </Button>
+
+        <!--Defines the show password button for the confirm password box-->
+        <Button Name="ShowConfirmPasswordButton" BorderThickness="0" Click="ShowConfirmPasswordButtonEvent" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,120,0,0">
+            <Image RenderOptions.BitmapScalingMode="Fant" Name="ShowConfirmPasswordImage">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="./img/ShowPassword.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="False"/>
+                            <Trigger Property="IsFocused" Value="False" />
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Button.Background>
+                <SolidColorBrush Color="#000000" Opacity="0" />
+            </Button.Background>
+        </Button>
+
+        <Button Name="RegisterButton" Click="RegisterButton_Click" FontSize="20" Content="Register" FontFamily="./fonts/#Bryant" Width="90" Height="30" Margin="0,220,0,0" Style="{DynamicResource LoginButton}" />
     </Grid>
 </Page>
