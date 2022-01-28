@@ -1,0 +1,14 @@
+{
+  "UsersList": [
+    {
+      "Username": "Rick",
+      "Email": "@.com",
+      "Password": "balls"
+    },
+    {
+      "Username": "User1",
+      "Email": "User1",
+      "Password": "Balls"
+    }
+  ]
+}

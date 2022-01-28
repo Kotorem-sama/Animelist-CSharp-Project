@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Text.Json;
-using System.IO;
+using Animelist_CSharp_Project;
 
 namespace Animelist_CSharp_Project
 {
@@ -25,50 +24,6 @@ namespace Animelist_CSharp_Project
         public LoginPage()
         {
             InitializeComponent();
-        }
-        public static void checkJson()
-        {
-            try
-            {
-                People Accounts = JsonSerializer.Deserialize<People>(ReadJson("Accounts"));
-            }
-            catch
-            {
-                People Accounts = new People();
-                User AdminUser = new User("Rick", "balls");
-                Accounts.AddPerson(AdminUser);
-                JsonSerializerOptions opt = new JsonSerializerOptions { WriteIndented = true };
-                string json = JsonSerializer.Serialize(Accounts, opt);
-                WriteJson("Users", json);
-            }
-        }
-        public static void WriteJson(string filename, string content)
-        {
-            try
-            {
-                File.WriteAllText($"./json/{filename}.json", content);
-            }
-            catch
-            {
-                System.IO.Directory.CreateDirectory("./json/");
-                File.WriteAllText($"./json/{filename}.json", content);
-            }
-
-        }
-        public static string ReadJson(string filename)
-        {
-            string path = File.ReadAllText($"./json/{filename}.json");
-            return path;
-        }
-        public static void SaveToJson(string username, string password)
-        {
-            checkJson();
-            string json = ReadJson("Users");
-            People jsonPeople = People.FromJson(json);
-            User customer = new User(username, password);
-            jsonPeople.AddPerson(customer);
-            string add = jsonPeople.ToJson();
-            WriteJson("Users", add);
         }
         private void TextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
@@ -126,51 +81,13 @@ namespace Animelist_CSharp_Project
                 }
             }
         }
-        public class User
-        {
-            public string Username;
-            public string Password;
-            public User(string username, string password)
-            {
-                this.Username = username;
-                this.Password = password;
-            }
-        }
-        public class People
-        {
-            public List<User> PeopleList { get; set; }
-            public void AddPerson(User personToAdd)
-            {
-                if (PeopleList == null)
-                {
-                    List<User> newPerson = new List<User>();
-                    newPerson.Add(personToAdd);
-                    PeopleList = newPerson;
-                }
-                else
-                {
-                    PeopleList.Add(personToAdd);
-                }
-            }
-            public string ToJson()
-            {
-                JsonSerializerOptions opt = new JsonSerializerOptions() { WriteIndented = true };
-                return JsonSerializer.Serialize(this, opt);
-            }
-            public static People FromJson(string json)
-            {
-                return JsonSerializer.Deserialize<People>(json);
-            }
-        }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveToJson("User1", "password1");
-            SaveToJson("User2", "password2");
-            User[] balls = { new User("User1", "password1"), new User("User2", "password2") };
             Boolean matchFound = false;
-            for (int i = 0; i < balls.Length && matchFound == false; i++)
+            Json.Users balls = Json.GetUsersList();
+            for (int i = 0; i < balls.UsersList.Count() && matchFound == false; i++)
             {
-                if (UsernameTextBox.Text.ToLower() == balls[i].Username.ToLower() && (PasswordTextBox.Password == balls[i].Password || PasswordTextBoxShow.Text == balls[i].Password))
+                if ((UsernameTextBox.Text.ToLower() == balls.UsersList[i].Username.ToLower() || UsernameTextBox.Text.ToLower() == balls.UsersList[i].Email.ToLower()) && (PasswordTextBox.Password == balls.UsersList[i].Password || PasswordTextBoxShow.Text == balls.UsersList[i].Password))
                 {
                     NavigationService.Navigate(new Homepage());
                 }
