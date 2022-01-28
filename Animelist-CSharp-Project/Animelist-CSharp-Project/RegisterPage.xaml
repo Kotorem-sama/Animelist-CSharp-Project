@@ -100,7 +100,14 @@
                 <SolidColorBrush Color="#000000" Opacity="0" />
             </Button.Background>
         </Button>
-
+        
+        <!--Register button-->
         <Button Name="RegisterButton" Click="RegisterButton_Click" FontSize="20" Content="Register" FontFamily="./fonts/#Bryant" Width="90" Height="30" Margin="0,220,0,0" Style="{DynamicResource LoginButton}" />
+        
+        <!--Error messages-->
+        <Label FontFamily="./fonts/#Bryant" Visibility="Hidden" Name="AlreadyInUse" Content="This Username or Email is already in use." Foreground="#FFCB5B" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,163" />
+        <Label FontFamily="./fonts/#Bryant" Visibility="Hidden" Name="PasswordsNoMatch" Content="These Passwords don't match." Foreground="#FF0008" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,163" />
+        <Label FontFamily="./fonts/#Bryant" Visibility="Hidden" Name="EmptyError" Content="Please fill in every input box." Foreground="#FF0008" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,163" />
+        <Label FontFamily="./fonts/#Bryant" Visibility="Hidden" Name="Successfull" Content="Your account has been successfully created." Foreground="#28FF07" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,163" />
     </Grid>
 </Page>
