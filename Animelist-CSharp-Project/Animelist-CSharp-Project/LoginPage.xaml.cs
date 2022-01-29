@@ -27,79 +27,36 @@ namespace Animelist_CSharp_Project
         }
         private void TextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)165, (byte)165, (byte)165));
-            if (e.Source.GetType() == typeof(TextBox))
-            {
-                TextBox source = e.Source as TextBox;
-                source.Background = brush;
-
-                if (source != null && (source.Text == "Password" || source.Text == "Username" || source.Text == "Email"))
-                {
-                    source.Clear();
-                }
-            }
-            else if (e.Source.GetType() == typeof(PasswordBox))
-            {
-                PasswordBox source = e.Source as PasswordBox;
-                source.Background = brush;
-
-                if (source != null && (source.Password == "Password" || source.Password == "Username"))
-                {
-                    source.Clear();
-                }
-            }
+            UniversalMethods.TextBox_GotKeyboardFocus(sender, e);
         }
         private void TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            var brush = new SolidColorBrush(Color.FromArgb(255, (byte)201, (byte)201, (byte)201));
-
-            if (e.Source.GetType() == typeof(TextBox))
-            {
-                TextBox source = e.Source as TextBox;
-                source.Background = brush;
-                source.Text = source.Text.Trim();
-                if (source.Text == "")
-                {
-                    if (source.Name == "UsernameTextBox")
-                    {
-                        source.Text = "Username";
-                    }
-                    else if (source.Name == "PasswordTextBoxShow")
-                    {
-                        source.Text = "Password";
-                    }
-                }
-            }
-            else if (e.Source.GetType() == typeof(PasswordBox))
-            {
-                PasswordBox source = e.Source as PasswordBox;
-                source.Background = brush;
-                source.Password = source.Password.Trim();
-                if (source.Password == "" && (source.Name == "PasswordTextBox" || source.Name == "ConfirmPasswordTextBox"))
-                {
-                    source.Password = "Password";
-                }
-            }
+            UniversalMethods.TextBox_LostKeyboardFocus(sender, e);
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            wrongData.Opacity = 0;
             Boolean matchFound = false;
             Json.Users balls = Json.GetUsersList();
             for (int i = 0; i < balls.UsersList.Count() && matchFound == false; i++)
             {
                 if ((UsernameTextBox.Text.ToLower() == balls.UsersList[i].Username.ToLower() || UsernameTextBox.Text.ToLower() == balls.UsersList[i].Email.ToLower()) && (PasswordTextBox.Password == balls.UsersList[i].Password || PasswordTextBoxShow.Text == balls.UsersList[i].Password))
                 {
-                    NavigationService.Navigate(new Homepage());
+                    matchFound = true;
                 }
             }
             if (matchFound == false) { wrongData.Opacity = 1; }
+            Keyboard.ClearFocus();
             PasswordTextBox.Password = "Password";
             PasswordTextBoxShow.Text = "Password";
+            UnShowPassword();
+            if (matchFound == true) { NavigationService.Navigate(new Homepage()); }
         }
         private void ShowPasswordButtonEvent(object sender, RoutedEventArgs e)
         {
             var converter = new ImageSourceConverter();
             string[] path = ShowPasswordImage.Source.ToString().Split('/');
+            GoBackPageButton_Click();
             if (path[path.Length - 1] == "HidePassword.png")
             {
                 ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
@@ -115,27 +72,35 @@ namespace Animelist_CSharp_Project
                 PasswordTextBox.Visibility = Visibility.Hidden;
             }
         }
-
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new RegisterPage());
         }
-
         private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                GoBackPageButton_Click(sender, e);
                 LoginButton_Click(sender, e);
             }
         }
-
-        public void GoBackPageButton_Click(object sender, RoutedEventArgs e)
+        public void GoBackPageButton_Click()
         {
             int a = 0;
             for (a = 0; NavigationService.CanGoBack; a++)
             {
                 NavigationService.GoBack();
+            }
+        }
+        public void UnShowPassword()
+        {
+            var converter = new ImageSourceConverter();
+            string[] path = ShowPasswordImage.Source.ToString().Split('/');
+            if (path[path.Length - 1] == "HidePassword.png")
+            {
+                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
+                PasswordTextBox.Password = PasswordTextBoxShow.Text;
+                PasswordTextBoxShow.Visibility = Visibility.Hidden;
+                PasswordTextBox.Visibility = Visibility.Visible;
             }
         }
     }
