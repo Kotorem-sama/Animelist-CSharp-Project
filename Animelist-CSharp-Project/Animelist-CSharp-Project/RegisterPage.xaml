@@ -31,9 +31,21 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="TextBoxes" TargetType="{x:Type Control}">
+            <Setter Property="Foreground" Value="#696969"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="#C9C9C9"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="./fonts/#Bryant" />
+        </Style>
     </Page.Resources>
     <Grid>
-        <!--Paw gets added-->
+        <!--The catgirl silhouette gets added-->
         <Image RenderOptions.BitmapScalingMode="Fant" Source="./img/CatGirlSilhouette2.png" Opacity="0.05" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1000"/>
 
         <!--Back button-->
@@ -58,12 +70,12 @@
         <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="ExtraBold" Text="Register" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Margin="0,-240,0,0"/>
         
         <!--Input boxes-->
-        <TextBox Name="EmailTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Width="240" Height="25" Margin="0,-105,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Email" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
-        <TextBox Name="UsernameTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Width="240" Height="25" Margin="0,-29,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
-        <PasswordBox Name="PasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Password="Password" Width="240" Height="25" Margin="0,45,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
-        <TextBox Visibility="Hidden" Name="PasswordTextBoxShow" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Text="Password" Width="240" Height="25" Margin="0,45,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
-        <PasswordBox Name="ConfirmPasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Password="Password" Width="240" Height="25" Margin="0,121,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
-        <TextBox Visibility="Hidden" Name="ConfirmPasswordTextBoxShow" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Text="Password" Width="240" Height="25" Margin="0,121,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+        <TextBox Name="EmailTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-105,0,0" Text="Email" Style="{DynamicResource TextBoxes}" />
+        <TextBox Name="UsernameTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-29,0,0" Text="Username" Style="{DynamicResource TextBoxes}" />
+        <PasswordBox Name="PasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,45,0,0" Password="Password" Style="{DynamicResource TextBoxes}" />
+        <TextBox Name="PasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,45,0,0" Text="Password" Visibility="Hidden" Style="{DynamicResource TextBoxes}" />
+        <PasswordBox Name="ConfirmPasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,121,0,0" Password="Password" Style="{DynamicResource TextBoxes}" />
+        <TextBox Name="ConfirmPasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,121,0,0" Text="Password" Visibility="Hidden" Style="{DynamicResource TextBoxes}" />
 
         <!--Defines the show password button for the password box-->
         <Button Name="ShowPasswordButton" BorderThickness="0" Click="ShowPasswordButtonEvent" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,45,0,0">
