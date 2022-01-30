@@ -7,71 +7,42 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginPage">
-
     <Page.Resources>
-        <Style x:Key="LoginButton" TargetType="{x:Type Button}">
-            <Setter Property="Foreground" Value="#AF7500"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="8" BorderThickness="0" Background="#FCBA43" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#F4B300"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#E9A400"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="XamlStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
     
     <Grid>
-        <Label FontFamily="./fonts/#Bryant" Name="wrongData" Content="Your username or password is incorrect." Opacity="0" Foreground="#FF0000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-120,0,0"/>
-
-        <!--Paw gets added-->
-        <Image RenderOptions.BitmapScalingMode="Fant" Source="./img/CatGirlSilhouette.png" Opacity="0.05" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1000"/>
+        <!--Catgirl silhouette gets added-->
+        <Image Source="./Images/CatGirlSilhouette.png" Style="{DynamicResource Silhouettes}"/>
 
         <!--Login title text-->
-        <TextBlock FontFamily="./fonts/#Bryant" FontStyle="Normal" FontWeight="ExtraBold" Text="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Margin="0,-218,0,0"/>
+        <Label Content="Login" FontSize="50" Margin="0,-218,0,0" Style="{DynamicResource LabelStyle}"/>
+
+        <!--Error messages-->
+        <Label Name="wrongData" Content="Your username or password is incorrect." Opacity="0" Foreground="#FF0000" Margin="0,-120,0,0" Style="{DynamicResource LabelStyle}"/>
+        <Label Name="NoAccountMatch" Content="We haven't found an account match for this username/email address." Opacity="0" Foreground="#FF0000" Margin="0,-120,0,0" Style="{DynamicResource LabelStyle}"/>
 
         <!--TextBoxes for username and password-->
-        <TextBox Name="UsernameTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Width="240" Height="25" Margin="0,-49,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant"/>
-        <PasswordBox KeyDown="PasswordTextBox_KeyDown" Name="PasswordTextBox" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Password="Password" Width="240" Height="25" Margin="0,50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
-        <TextBox Visibility="Hidden" Name="PasswordTextBoxShow" BorderThickness="0" Foreground="#696969" Background="#C9C9C9" LostKeyboardFocus="TextBox_LostKeyboardFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" Text="Password" Width="240" Height="25" Margin="0,50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="./fonts/#Bryant" />
+        <TextBox Name="UsernameTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-49,0,0" Text="Username" Style="{DynamicResource TextBoxes}"/>
+        <PasswordBox KeyDown="PasswordEnter" Name="PasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Password="Password" Margin="0,50,0,0" Style="{DynamicResource TextBoxes}"/>
+        <TextBox KeyDown="PasswordEnter" Visibility="Hidden" Name="PasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Text="Password" Margin="0,50,0,0" Style="{DynamicResource TextBoxes}"/>
 
-
-        <!--Defines the show password button-->
-        <Button Name="ShowPasswordButton" BorderThickness="0" Click="ShowPasswordButtonEvent" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,51,0,0">
-            <!--<Image Name="ShowPasswordImage" RenderOptions.BitmapScalingMode="Fant" Source="./img/ShowPassword.png"/>-->
-            <Image RenderOptions.BitmapScalingMode="Fant" Name="ShowPasswordImage">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="./img/ShowPassword.png"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="False"/>
-                            <Trigger Property="IsFocused" Value="False" />
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
+        <!--Show password button-->
+        <Button Name="ShowPasswordButton" Click="ShowPasswordButtonEvent" Margin="200,51,0,0"  Style="{DynamicResource ShowPasswordButtonStyle}">
+            <Image Name="ShowPasswordImage" Style="{DynamicResource ShowPasswordImageStyle}"/>
             <Button.Background>
-                <SolidColorBrush Color="#000000" Opacity="0" />
+                <SolidColorBrush Opacity="0" />
             </Button.Background>
         </Button>
 
         <!--Login button-->
-        <Button Name="LoginButton" Click="LoginButton_Click" FontSize="20" Content="Login" FontFamily="./fonts/#Bryant" Width="90" Height="30" Margin="0,180,100,0" Style="{DynamicResource LoginButton}" />
+        <Button Name="LoginButton" Click="LoginButton_Click" Content="Login" Margin="0,180,100,0" Style="{DynamicResource Buttons}" />
 
         <!--Register button-->
-        <Button Name="RegisterButton" Click="RegisterButton_Click" FontSize="20" Content="Register" FontFamily="./fonts/#Bryant" Width="90" Height="30" Margin="100,180,0,0" Style="{DynamicResource LoginButton}" />
+        <Button Name="RegisterButton" Click="RegisterButton_Click" Content="Register" Margin="100,180,0,0" Style="{DynamicResource Buttons}" />
     </Grid>
 </Page>
