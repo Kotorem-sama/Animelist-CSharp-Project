@@ -10,13 +10,13 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries >
-                <ResourceDictionary Source="XamlStyles.xaml"/>
+                <ResourceDictionary Source="../StyleSheets/XamlStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
         <!--The catgirl silhouette gets added first, because otherwise it would be layered above everything-->
-        <Image Source="./Images/CatGirlSilhouette2.png" Style="{DynamicResource Silhouettes}"/>
+        <Image Source="../Images/CatGirlSilhouette2.png" Style="{DynamicResource Silhouettes}"/>
         
         <!--Back button-->
         <Button Click="GoBackButton_Click" Style="{DynamicResource BackButtonStyle}">

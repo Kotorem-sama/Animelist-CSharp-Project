@@ -9,12 +9,12 @@ Animelist_CSharp_Project
 none
 false
 DEBUG;TRACE
-C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\App.xaml
-5-1863550246
-1-364736102
-101577050826
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\ConfigFiles\App.xaml
+5-1626405828
+11684582729
+10-349882961
 231480997309
-XamlStyles.xaml;Homepage.xaml;LoginPage.xaml;MainWindow.xaml;RegisterPage.xaml;
+StyleSheets\XamlStyles.xaml;XamlPages\Homepage.xaml;XamlPages\LoginPage.xaml;MainWindow.xaml;XamlPages\RegisterPage.xaml;
 
 False
 

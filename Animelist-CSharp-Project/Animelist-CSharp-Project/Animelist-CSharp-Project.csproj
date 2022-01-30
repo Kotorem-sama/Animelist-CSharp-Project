@@ -81,24 +81,24 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="ConfigFiles\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Json.cs" />
     <Compile Include="Classes\UniversalMethods.cs" />
-    <Compile Include="RegisterPage.xaml.cs">
+    <Compile Include="XamlPages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="XamlStyles.xaml">
+    <Page Include="StyleSheets\XamlStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Homepage.xaml">
+    <Page Include="XamlPages\Homepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginPage.xaml">
+    <Page Include="XamlPages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,21 +106,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="ConfigFiles\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Homepage.xaml.cs">
+    <Compile Include="XamlPages\Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.xaml.cs">
+    <Compile Include="XamlPages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RegisterPage.xaml">
+    <Page Include="XamlPages\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,14 +145,14 @@
     </EmbeddedResource>
     <Resource Include="Fonts\bryant-regular.otf" />
     <Resource Include="Fonts\copyfonts.com_bryant-bold.ttf" />
-    <None Include="packages.config" />
+    <None Include="ConfigFiles\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="ConfigFiles\App.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Logo.png" />
@@ -177,11 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\CatGirlSilhouette2.png" />
-    <Content Include="Stylesheet1.css" />
+    <Content Include="StyleSheets\Stylesheet1.css" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="XamlPages\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
