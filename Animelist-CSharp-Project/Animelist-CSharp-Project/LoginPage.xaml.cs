@@ -37,7 +37,6 @@ namespace Animelist_CSharp_Project
         {
             var converter = new ImageSourceConverter();
             string[] path = ShowPasswordImage.Source.ToString().Split('/');
-            GoBackPageButton_Click();
             if (path[path.Length - 1] == "HidePassword.png")
             {
                 ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/ShowPassword.png");
@@ -64,14 +63,6 @@ namespace Animelist_CSharp_Project
                 LoginButton_Click(sender, e);
             }
         }
-        public void GoBackPageButton_Click()
-        {
-            int a = 0;
-            for (a = 0; NavigationService.CanGoBack; a++)
-            {
-                NavigationService.GoBack();
-            }
-        }
         public void UnShowPassword()
         {
             var converter = new ImageSourceConverter();
@@ -88,8 +79,9 @@ namespace Animelist_CSharp_Project
         {
             for (int i = 0; i < Userslist.UsersList.Count(); i++)
             {
-                if ((UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Username.ToLower() || UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Email.ToLower()) && (PasswordTextBox.Password == Userslist.UsersList[i].Password || PasswordTextBoxShow.Text == Userslist.UsersList[i].Password))
+                if ((UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Username.ToLower() || UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Email.ToLower()) && PasswordTextBox.Password == Userslist.UsersList[i].Password)
                 {
+                    Json.SetLoggedIn(Userslist.UsersList[i]);
                     return Userslist.UsersList[i];
                 }
                 else if (UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Username.ToLower() || UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Email.ToLower())
@@ -105,8 +97,6 @@ namespace Animelist_CSharp_Project
             NoAccountMatch.Opacity = 0;
             Keyboard.ClearFocus();
             UnShowPassword();
-            PasswordTextBox.Password = "Password";
-            PasswordTextBoxShow.Text = "Password";
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -115,6 +105,7 @@ namespace Animelist_CSharp_Project
             if (foundUser.Username == "Username") { wrongData.Opacity = 1; }
             else if (foundUser.Username == null) { NoAccountMatch.Opacity = 1; }
             else { NavigationService.Navigate(new Homepage()); }
+            PasswordTextBox.Password = "Password";
         }
     }
 }

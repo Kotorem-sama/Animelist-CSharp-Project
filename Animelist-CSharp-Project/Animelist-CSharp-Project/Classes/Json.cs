@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
 using System.IO;
+using System;
 
 namespace Animelist_CSharp_Project
 {
@@ -19,6 +20,15 @@ namespace Animelist_CSharp_Project
                 this.Username = name;
                 this.Email = email;
                 this.Password = password;
+            }
+            public string ToJson()
+            {
+                JsonSerializerOptions opt = new JsonSerializerOptions() { WriteIndented = true };
+                return JsonSerializer.Serialize(this, opt);
+            }
+            public static User FromJson(string json)
+            {
+                return JsonSerializer.Deserialize<User>(json);
             }
         }
         public class Users
@@ -47,15 +57,10 @@ namespace Animelist_CSharp_Project
                 JsonSerializerOptions opt = new JsonSerializerOptions() { WriteIndented = true };
                 return JsonSerializer.Serialize(this, opt);
             }
-        }
-        public string ToJson(User user)
-        {
-            JsonSerializerOptions opt = new JsonSerializerOptions() { WriteIndented = true };
-            return JsonSerializer.Serialize(user, opt);
-        }
-        public static Users FromJson(string json)
-        {
-            return JsonSerializer.Deserialize<Users>(json);
+            public static Users FromJson(string json)
+            {
+                return JsonSerializer.Deserialize<Users>(json);
+            }
         }
         public static void CheckJson()
         {
@@ -69,7 +74,8 @@ namespace Animelist_CSharp_Project
             try { User Loggedin = JsonSerializer.Deserialize<User>(ReadJson("LoggedIn")); }
             catch
             {
-                WriteJson("Users", ToJson(new User("","","")));
+                User newuser = new User();
+                WriteJson("LoggedIn", newuser.ToJson());
             }
         }
         public static void WriteJson(string filename, string content)
@@ -102,9 +108,16 @@ namespace Animelist_CSharp_Project
             string json = ReadJson("Users");
             return Users.FromJson(json);
         }
-        public static void SetLoggedIn()
+        public static void SetLoggedIn(User LoggedInUser)
         {
             CheckJson();
+            WriteJson("LoggedIn", LoggedInUser.ToJson());
+        }
+        public static User GetUser()
+        {
+            CheckJson();
+            string json = ReadJson("LoggedIn");
+            return User.FromJson(json);
         }
     }
 }
