@@ -23,12 +23,8 @@ namespace Animelist_CSharp_Project
         public MainWindow()
         {
             InitializeComponent();
-            MijnFrame.Content = new LoginPage();
-        }
-
-        private void ShowPasswordButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (Json.GetUser().Username == null) { MijnFrame.Content = new LoginPage(); }
+            else { MijnFrame.Content = new Homepage(); }
         }
     }
 }

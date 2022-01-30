@@ -24,15 +24,6 @@ namespace Animelist_CSharp_Project
         {
             InitializeComponent();
         }
-        public void GoBackPageButton_Click(object sender, RoutedEventArgs e)
-        {
-            int a = 0;
-            for (a = 0; NavigationService.CanGoBack; a++)
-            {
-                NavigationService.GoBack();
-            }
-            Console.WriteLine(a);
-        }
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new LoginPage());

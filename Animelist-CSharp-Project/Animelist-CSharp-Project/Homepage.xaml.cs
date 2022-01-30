@@ -24,9 +24,9 @@ namespace Animelist_CSharp_Project
         {
             InitializeComponent();
         }
-
-        private void ShowPasswordButton_Click(object sender, RoutedEventArgs e)
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
+            Json.SetLoggedIn(new Json.User());
             NavigationService.Navigate(new LoginPage());
         }
     }

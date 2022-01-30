@@ -7,24 +7,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Homepage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="XamlStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
-        <!--Back button-->
-        <Button Name="ShowPasswordButton" BorderThickness="0" Click="ShowPasswordButton_Click" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
-            <Image RenderOptions.BitmapScalingMode="Fant" Name="ShowPasswordImage">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="./Images/BackButton.png"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="False"/>
-                            <Trigger Property="IsFocused" Value="False" />
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
-            <Button.Background>
-                <SolidColorBrush Color="#000000" Opacity="0" />
-            </Button.Background>
-        </Button>
+        <!--Logout button-->
+        <Button Name="LogOutButton" Click="LogOutButton_Click" Content="Logout" Margin="617,0,120,313.6" Height="23" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>
