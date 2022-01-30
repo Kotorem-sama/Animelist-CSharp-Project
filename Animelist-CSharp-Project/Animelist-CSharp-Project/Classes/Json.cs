@@ -8,21 +8,18 @@ namespace Animelist_CSharp_Project
     {
         public class User
         {
-            public User()
-            {
-            }
+            public string Username { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
+
+            public User() { }
+            public User(string name) { this.Username = name; }
             public User(string name, string email, string password)
             {
                 this.Username = name;
                 this.Email = email;
                 this.Password = password;
             }
-
-            public string Username { get; set; }
-            public string Email { get; set; }
-            public string Password { get; set; }
-            //If you gonna edit this EDIT ALL
-
         }
         public class Users
         {
@@ -50,10 +47,15 @@ namespace Animelist_CSharp_Project
                 JsonSerializerOptions opt = new JsonSerializerOptions() { WriteIndented = true };
                 return JsonSerializer.Serialize(this, opt);
             }
-            public static Users FromJson(string json)
-            {
-                return JsonSerializer.Deserialize<Users>(json);
-            }
+        }
+        public string ToJson(User user)
+        {
+            JsonSerializerOptions opt = new JsonSerializerOptions() { WriteIndented = true };
+            return JsonSerializer.Serialize(user, opt);
+        }
+        public static Users FromJson(string json)
+        {
+            return JsonSerializer.Deserialize<Users>(json);
         }
         public static void CheckJson()
         {
@@ -63,6 +65,11 @@ namespace Animelist_CSharp_Project
                 Users Accounts = new Users();
                 Accounts.AddPerson(new User("Rick", "@.com", "balls"));
                 WriteJson("Users", Accounts.ToJson());
+            }
+            try { User Loggedin = JsonSerializer.Deserialize<User>(ReadJson("LoggedIn")); }
+            catch
+            {
+                WriteJson("Users", ToJson(new User("","","")));
             }
         }
         public static void WriteJson(string filename, string content)
@@ -94,6 +101,10 @@ namespace Animelist_CSharp_Project
             CheckJson();
             string json = ReadJson("Users");
             return Users.FromJson(json);
+        }
+        public static void SetLoggedIn()
+        {
+            CheckJson();
         }
     }
 }

@@ -39,3 +39,4 @@ C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\An
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\bin\Debug\System.ValueTuple.xml
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\Animelist-CSharp-Project.csproj.CopyComplete
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\XamlStyles.baml

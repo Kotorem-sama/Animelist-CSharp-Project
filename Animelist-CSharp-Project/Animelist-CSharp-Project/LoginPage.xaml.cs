@@ -25,32 +25,13 @@ namespace Animelist_CSharp_Project
         {
             InitializeComponent();
         }
-        private void TextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void GotKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             UniversalMethods.TextBox_GotKeyboardFocus(sender, e);
         }
-        private void TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             UniversalMethods.TextBox_LostKeyboardFocus(sender, e);
-        }
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            wrongData.Opacity = 0;
-            Boolean matchFound = false;
-            Json.Users balls = Json.GetUsersList();
-            for (int i = 0; i < balls.UsersList.Count() && matchFound == false; i++)
-            {
-                if ((UsernameTextBox.Text.ToLower() == balls.UsersList[i].Username.ToLower() || UsernameTextBox.Text.ToLower() == balls.UsersList[i].Email.ToLower()) && (PasswordTextBox.Password == balls.UsersList[i].Password || PasswordTextBoxShow.Text == balls.UsersList[i].Password))
-                {
-                    matchFound = true;
-                }
-            }
-            if (matchFound == false) { wrongData.Opacity = 1; }
-            Keyboard.ClearFocus();
-            PasswordTextBox.Password = "Password";
-            PasswordTextBoxShow.Text = "Password";
-            UnShowPassword();
-            if (matchFound == true) { NavigationService.Navigate(new Homepage()); }
         }
         private void ShowPasswordButtonEvent(object sender, RoutedEventArgs e)
         {
@@ -59,14 +40,14 @@ namespace Animelist_CSharp_Project
             GoBackPageButton_Click();
             if (path[path.Length - 1] == "HidePassword.png")
             {
-                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
+                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/ShowPassword.png");
                 PasswordTextBox.Password = PasswordTextBoxShow.Text;
                 PasswordTextBoxShow.Visibility = Visibility.Hidden;
                 PasswordTextBox.Visibility = Visibility.Visible;
             }
             else
             {
-                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/HidePassword.png");
+                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/HidePassword.png");
                 PasswordTextBoxShow.Text = PasswordTextBox.Password;
                 PasswordTextBoxShow.Visibility = Visibility.Visible;
                 PasswordTextBox.Visibility = Visibility.Hidden;
@@ -76,7 +57,7 @@ namespace Animelist_CSharp_Project
         {
             NavigationService.Navigate(new RegisterPage());
         }
-        private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void PasswordEnter(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -97,11 +78,43 @@ namespace Animelist_CSharp_Project
             string[] path = ShowPasswordImage.Source.ToString().Split('/');
             if (path[path.Length - 1] == "HidePassword.png")
             {
-                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
+                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/ShowPassword.png");
                 PasswordTextBox.Password = PasswordTextBoxShow.Text;
                 PasswordTextBoxShow.Visibility = Visibility.Hidden;
                 PasswordTextBox.Visibility = Visibility.Visible;
             }
+        }
+        private Json.User FindUser(Json.Users Userslist)
+        {
+            for (int i = 0; i < Userslist.UsersList.Count(); i++)
+            {
+                if ((UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Username.ToLower() || UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Email.ToLower()) && (PasswordTextBox.Password == Userslist.UsersList[i].Password || PasswordTextBoxShow.Text == Userslist.UsersList[i].Password))
+                {
+                    return Userslist.UsersList[i];
+                }
+                else if (UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Username.ToLower() || UsernameTextBox.Text.ToLower() == Userslist.UsersList[i].Email.ToLower())
+                {
+                    return new Json.User("Username");
+                }
+            }
+            return new Json.User();
+        }
+        private void PrepareForFailure()
+        {
+            wrongData.Opacity = 0;
+            NoAccountMatch.Opacity = 0;
+            Keyboard.ClearFocus();
+            UnShowPassword();
+            PasswordTextBox.Password = "Password";
+            PasswordTextBoxShow.Text = "Password";
+        }
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            PrepareForFailure();
+            Json.User foundUser = FindUser(Json.GetUsersList());
+            if (foundUser.Username == "Username") { wrongData.Opacity = 1; }
+            else if (foundUser.Username == null) { NoAccountMatch.Opacity = 1; }
+            else { NavigationService.Navigate(new Homepage()); }
         }
     }
 }

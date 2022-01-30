@@ -85,11 +85,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="class\Json.cs" />
-    <Compile Include="class\UniversalMethods.cs" />
+    <Compile Include="Classes\Json.cs" />
+    <Compile Include="Classes\UniversalMethods.cs" />
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="XamlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Homepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,8 +143,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="fonts\bryant-regular.otf" />
-    <Resource Include="fonts\copyfonts.com_bryant-bold.ttf" />
+    <Resource Include="Fonts\bryant-regular.otf" />
+    <Resource Include="Fonts\copyfonts.com_bryant-bold.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -151,28 +155,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\Logo.png" />
+    <Resource Include="Images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\bruh.ico" />
+    <Resource Include="Images\bruh.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\Paw.png" />
+    <Resource Include="Images\Paw.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\CatGirlSilhouette.png" />
+    <Resource Include="Images\CatGirlSilhouette.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\ShowPassword.png" />
+    <Resource Include="Images\ShowPassword.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\HidePassword.png" />
+    <Resource Include="Images\HidePassword.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\BackButton.png" />
+    <Resource Include="Images\BackButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\CatGirlSilhouette2.png" />
+    <Resource Include="Images\CatGirlSilhouette2.png" />
     <Content Include="Stylesheet1.css" />
   </ItemGroup>
   <ItemGroup />

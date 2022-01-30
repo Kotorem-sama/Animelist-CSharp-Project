@@ -51,14 +51,14 @@ namespace Animelist_CSharp_Project
             string[] path = ShowConfirmPasswordImage.Source.ToString().Split('/');
             if (path[path.Length - 1] == "HidePassword.png")
             {
-                ShowConfirmPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
+                ShowConfirmPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/ShowPassword.png");
                 ConfirmPasswordTextBox.Password = ConfirmPasswordTextBoxShow.Text;
                 ConfirmPasswordTextBoxShow.Visibility = Visibility.Hidden;
                 ConfirmPasswordTextBox.Visibility = Visibility.Visible;
             }
             else
             {
-                ShowConfirmPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/HidePassword.png");
+                ShowConfirmPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/HidePassword.png");
                 ConfirmPasswordTextBoxShow.Text = ConfirmPasswordTextBox.Password;
                 ConfirmPasswordTextBoxShow.Visibility = Visibility.Visible;
                 ConfirmPasswordTextBox.Visibility = Visibility.Hidden;
@@ -78,14 +78,14 @@ namespace Animelist_CSharp_Project
             string[] path = ShowPasswordImage.Source.ToString().Split('/');
             if (path[path.Length - 1] == "HidePassword.png")
             {
-                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
+                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/ShowPassword.png");
                 PasswordTextBox.Password = PasswordTextBoxShow.Text;
                 PasswordTextBoxShow.Visibility = Visibility.Hidden;
                 PasswordTextBox.Visibility = Visibility.Visible;
             }
             else
             {
-                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/HidePassword.png");
+                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/HidePassword.png");
                 PasswordTextBoxShow.Text = PasswordTextBox.Password;
                 PasswordTextBoxShow.Visibility = Visibility.Visible;
                 PasswordTextBox.Visibility = Visibility.Hidden;
@@ -164,7 +164,7 @@ namespace Animelist_CSharp_Project
             string[] path = ShowPasswordImage.Source.ToString().Split('/');
             if (path[path.Length - 1] == "HidePassword.png")
             {
-                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
+                ShowPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/ShowPassword.png");
                 PasswordTextBox.Password = PasswordTextBoxShow.Text;
                 PasswordTextBoxShow.Visibility = Visibility.Hidden;
                 PasswordTextBox.Visibility = Visibility.Visible;
@@ -173,7 +173,7 @@ namespace Animelist_CSharp_Project
             path = ShowConfirmPasswordImage.Source.ToString().Split('/');
             if (path[path.Length - 1] == "HidePassword.png")
             {
-                ShowConfirmPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../img/ShowPassword.png");
+                ShowConfirmPasswordImage.Source = (ImageSource)converter.ConvertFromString("../../Images/ShowPassword.png");
                 ConfirmPasswordTextBox.Password = ConfirmPasswordTextBoxShow.Text;
                 ConfirmPasswordTextBoxShow.Visibility = Visibility.Hidden;
                 ConfirmPasswordTextBox.Visibility = Visibility.Visible;
