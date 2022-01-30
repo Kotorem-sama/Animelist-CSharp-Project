@@ -10,14 +10,14 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="XamlStyles.xaml"/>
+                <ResourceDictionary Source="../StyleSheets/XamlStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
     
     <Grid>
         <!--Catgirl silhouette gets added-->
-        <Image Source="./Images/CatGirlSilhouette.png" Style="{DynamicResource Silhouettes}"/>
+        <Image Source="../Images/CatGirlSilhouette.png" Style="{DynamicResource Silhouettes}"/>
 
         <!--Login title text-->
         <Label Content="Login" FontSize="50" Margin="0,-218,0,0" Style="{DynamicResource LabelStyle}"/>

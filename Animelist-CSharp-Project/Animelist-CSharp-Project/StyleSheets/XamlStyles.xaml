@@ -4,7 +4,7 @@
     <Style x:Key="Buttons" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="#AF7500"/>
         <Setter Property="FontSize" Value="20"/>
-        <Setter Property="FontFamily" Value="./Fonts/#Bryant" />
+        <Setter Property="FontFamily" Value="../Fonts/#Bryant" />
         <Setter Property="Width" Value="90" />
         <Setter Property="Height" Value="30" />
         <Setter Property="Template">
@@ -39,12 +39,12 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="./Fonts/#Bryant" />
+        <Setter Property="FontFamily" Value="../Fonts/#Bryant" />
     </Style>
     
     <Style x:Key="ShowPasswordImageStyle" TargetType="{x:Type Image}">
         <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
-        <Setter Property="Source" Value="./Images/ShowPassword.png"/>
+        <Setter Property="Source" Value="../Images/ShowPassword.png"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="False"/>
             <Trigger Property="IsFocused" Value="False" />
@@ -53,7 +53,7 @@
 
     <Style x:Key="BackButtonImageStyle" TargetType="{x:Type Image}">
         <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"/>
-        <Setter Property="Source" Value="./Images/BackButton.png"/>
+        <Setter Property="Source" Value="../Images/BackButton.png"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="False"/>
             <Trigger Property="IsFocused" Value="False" />
@@ -86,7 +86,7 @@
     <Style x:Key="LabelStyle" TargetType="{x:Type Label}">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="./Fonts/#Bryant" />
+        <Setter Property="FontFamily" Value="../Fonts/#Bryant" />
         <Setter Property="Margin" Value="0,0,0,163"/>
     </Style>
 </ResourceDictionary>

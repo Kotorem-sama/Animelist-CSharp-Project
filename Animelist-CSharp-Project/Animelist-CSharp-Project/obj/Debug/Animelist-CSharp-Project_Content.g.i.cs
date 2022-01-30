@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("stylesheet1.css")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("stylesheets/stylesheet1.css")]
 
 
