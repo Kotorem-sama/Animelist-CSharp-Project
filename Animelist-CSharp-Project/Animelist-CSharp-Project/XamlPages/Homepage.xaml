@@ -15,7 +15,27 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
+        <!--Grid definition-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <!--Borders get a color-->
+        <Rectangle Grid.Row="0" Fill="#F69300"/>
+        <Rectangle Grid.Row="2" Fill="#FFCD63"/>
+
+        <!--Logo gets added-->
+        <Image Grid.Row="0" RenderOptions.BitmapScalingMode="Fant" Source="../Images/Logo.png" VerticalAlignment="Top" Height="35" HorizontalAlignment="Center" />
+        
         <!--Logout button-->
-        <Button Name="LogOutButton" Click="LogOutButton_Click" Content="Logout" Margin="617,0,120,313.6" Height="23" VerticalAlignment="Bottom"/>
+        <Button Name="LogOutButton" Grid.Row="1" Click="LogOutButton_Click" Content="Logout" Margin="0,70,0,0" Height="23" VerticalAlignment="Center"/>
+
+        <!--Logged in account username-->
+        <Button Name="LoggedInUsername" FontFamily="../Fonts/#Bryant" Grid.Row="0" Margin="0,0,10,0" Width="16" Height="23" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <!--Profile button-->
+        <Button Visibility="Hidden" Name="ProfileButton" Grid.Row="0" Click="ProfileButton_Click" Content="Profile" Margin="0,0,10,0" Width="40" Height="23" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
 </Page>

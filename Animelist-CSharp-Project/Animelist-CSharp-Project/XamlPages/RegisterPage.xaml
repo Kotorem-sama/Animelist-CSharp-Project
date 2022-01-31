@@ -15,11 +15,25 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
+        <!--Grid definition-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <!--Borders get a color-->
+        <Rectangle Grid.Row="0" Fill="#F69300"/>
+        <Rectangle Grid.Row="2" Fill="#FFCD63"/>
+
+        <!--Logo gets added-->
+        <Image Grid.Row="0" RenderOptions.BitmapScalingMode="Fant" Source="../Images/Logo.png" VerticalAlignment="Top" Height="56" />
+        
         <!--The catgirl silhouette gets added first, because otherwise it would be layered above everything-->
-        <Image Source="../Images/CatGirlSilhouette2.png" Style="{DynamicResource Silhouettes}"/>
+        <Image Grid.Row="1" Source="../Images/CatGirlSilhouette2.png" Style="{DynamicResource Silhouettes}"/>
         
         <!--Back button-->
-        <Button Click="GoBackButton_Click" Style="{DynamicResource BackButtonStyle}">
+        <Button Grid.Row="1" Click="GoBackButton_Click" Style="{DynamicResource BackButtonStyle}">
             <Image Style="{DynamicResource BackButtonImageStyle}"/>
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
@@ -27,24 +41,24 @@
         </Button>
 
         <!--Register title text-->
-        <Label Content="Register" FontSize="40" Margin="0,-240,0,0" Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" Content="Register" FontSize="40" Margin="0,-240,0,0" Style="{DynamicResource LabelStyle}"/>
 
         <!--Error messages-->
-        <Label Visibility="Hidden" Name="AlreadyInUse" Content="This Username or Email is already in use." Foreground="#FFCB5B" Style="{DynamicResource LabelStyle}"/>
-        <Label Visibility="Hidden" Name="PasswordsNoMatch" Content="These Passwords don't match." Foreground="#FF0008" Style="{DynamicResource LabelStyle}"/>
-        <Label Visibility="Hidden" Name="EmptyError" Content="Please fill in every input box." Foreground="#FF0008" Style="{DynamicResource LabelStyle}"/>
-        <Label Visibility="Hidden" Name="Successfull" Content="Your account has been successfully created." Foreground="#28FF07" Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" Visibility="Hidden" Name="AlreadyInUse" Content="This Username or Email is already in use." Foreground="#FFCB5B" Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" Visibility="Hidden" Name="PasswordsNoMatch" Content="These Passwords don't match." Foreground="#FF0008" Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" Visibility="Hidden" Name="EmptyError" Content="Please fill in every input box." Foreground="#FF0008" Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" Visibility="Hidden" Name="Successfull" Content="Your account has been successfully created." Foreground="#28FF07" Style="{DynamicResource LabelStyle}"/>
 
         <!--Input boxes-->
-        <TextBox Name="EmailTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-105,0,0" Text="Email" Style="{DynamicResource TextBoxes}" />
-        <TextBox Name="UsernameTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-29,0,0" Text="Username" Style="{DynamicResource TextBoxes}" />
-        <PasswordBox Name="PasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,45,0,0" Password="Password" Style="{DynamicResource TextBoxes}" />
-        <TextBox Name="PasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,45,0,0" Text="Password" Visibility="Hidden" Style="{DynamicResource TextBoxes}" />
-        <PasswordBox Name="ConfirmPasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,121,0,0" Password="Password" Style="{DynamicResource TextBoxes}" />
-        <TextBox Name="ConfirmPasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,121,0,0" Text="Password" Visibility="Hidden" Style="{DynamicResource TextBoxes}" />
+        <TextBox Grid.Row="1" Name="EmailTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-105,0,0" Text="Email" Style="{DynamicResource TextBoxes}" />
+        <TextBox Grid.Row="1" Name="UsernameTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-29,0,0" Text="Username" Style="{DynamicResource TextBoxes}" />
+        <PasswordBox Grid.Row="1" Name="PasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,45,0,0" Password="Password" Style="{DynamicResource TextBoxes}" />
+        <TextBox Grid.Row="1" Name="PasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,45,0,0" Text="Password" Visibility="Hidden" Style="{DynamicResource TextBoxes}" />
+        <PasswordBox Grid.Row="1" Name="ConfirmPasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,121,0,0" Password="Password" Style="{DynamicResource TextBoxes}" />
+        <TextBox Grid.Row="1" Name="ConfirmPasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,121,0,0" Text="Password" Visibility="Hidden" Style="{DynamicResource TextBoxes}" />
 
         <!--Defines the show password button for the password box-->
-        <Button Name="ShowPasswordButton" Click="ShowPasswordButtonEvent" Margin="200,45,0,0"  Style="{DynamicResource ShowPasswordButtonStyle}">
+        <Button Grid.Row="1" Name="ShowPasswordButton" Click="ShowPasswordButtonEvent" Margin="200,45,0,0"  Style="{DynamicResource ShowPasswordButtonStyle}">
             <Image Name="ShowPasswordImage" Style="{DynamicResource ShowPasswordImageStyle}"/>
             <Button.Background>
                 <SolidColorBrush Opacity="0"/>
@@ -52,7 +66,7 @@
         </Button>
 
         <!--Defines the show password button for the confirm password box-->
-        <Button Name="ShowConfirmPasswordButton" Click="ShowConfirmPasswordButtonEvent" Margin="200,120,0,0" Style="{DynamicResource ShowPasswordButtonStyle}">
+        <Button Grid.Row="1" Name="ShowConfirmPasswordButton" Click="ShowConfirmPasswordButtonEvent" Margin="200,120,0,0" Style="{DynamicResource ShowPasswordButtonStyle}">
             <Image Name="ShowConfirmPasswordImage" Style="{DynamicResource ShowPasswordImageStyle}" />
             <Button.Background>
                 <SolidColorBrush Opacity="0"/>
@@ -60,6 +74,6 @@
         </Button>
         
         <!--Register button-->
-        <Button Name="RegisterButton" Click="RegisterButton_Click" Content="Register" Margin="0,220,0,0" Style="{DynamicResource Buttons}" />
+        <Button Grid.Row="1" Name="RegisterButton" Click="RegisterButton_Click" Content="Register" Margin="0,220,0,0" Style="{DynamicResource Buttons}" />
     </Grid>
 </Page>
