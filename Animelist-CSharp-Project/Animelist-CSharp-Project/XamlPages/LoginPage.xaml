@@ -14,25 +14,39 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
+
     <Grid>
+        <!--Grid definition-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <!--Borders get a color-->
+        <Rectangle Grid.Row="0" Fill="#F69300"/>
+        <Rectangle Grid.Row="2" Fill="#FFCD63"/>
+
+        <!--Logo gets added-->
+        <Image Grid.Row="0" RenderOptions.BitmapScalingMode="Fant" Source="../Images/Logo.png" VerticalAlignment="Top" Height="56" />
+
         <!--Catgirl silhouette gets added-->
-        <Image Source="../Images/CatGirlSilhouette.png" Style="{DynamicResource Silhouettes}"/>
+        <Image Grid.Row="1" Source="../Images/CatGirlSilhouette.png" Style="{DynamicResource Silhouettes}"/>
 
         <!--Login title text-->
-        <Label Content="Login" FontSize="50" Margin="0,-218,0,0" Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" Content="Login" FontSize="50" Margin="0,-218,0,0" Style="{DynamicResource LabelStyle}"/>
 
         <!--Error messages-->
-        <Label Name="wrongData" Content="Your username or password is incorrect." Opacity="0" Foreground="#FF0000" Margin="0,-120,0,0" Style="{DynamicResource LabelStyle}"/>
-        <Label Name="NoAccountMatch" Content="We haven't found an account match for this username/email address." Opacity="0" Foreground="#FF0000" Margin="0,-120,0,0" Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" Name="wrongData" Content="Your username or password is incorrect." Opacity="0" Foreground="#FF0000" Margin="0,-120,0,0" Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" Name="NoAccountMatch" Content="We haven't found an account match for this username/email address." Opacity="0" Foreground="#FF0000" Margin="0,-120,0,0" Style="{DynamicResource LabelStyle}"/>
 
         <!--TextBoxes for username and password-->
-        <TextBox Name="UsernameTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-49,0,0" Text="Username" Style="{DynamicResource TextBoxes}"/>
-        <PasswordBox KeyDown="PasswordEnter" Name="PasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Password="Password" Margin="0,50,0,0" Style="{DynamicResource TextBoxes}"/>
-        <TextBox KeyDown="PasswordEnter" Visibility="Hidden" Name="PasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Text="Password" Margin="0,50,0,0" Style="{DynamicResource TextBoxes}"/>
+        <TextBox Grid.Row="1" Name="UsernameTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Margin="0,-49,0,0" Text="Username" Style="{DynamicResource TextBoxes}"/>
+        <PasswordBox Grid.Row="1" KeyDown="PasswordEnter" Name="PasswordTextBox" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Password="Password" Margin="0,50,0,0" Style="{DynamicResource TextBoxes}"/>
+        <TextBox Grid.Row="1" KeyDown="PasswordEnter" Visibility="Hidden" Name="PasswordTextBoxShow" LostKeyboardFocus="LostKeyFocus" GotKeyboardFocus="GotKeyFocus" Text="Password" Margin="0,50,0,0" Style="{DynamicResource TextBoxes}"/>
 
         <!--Show password button-->
-        <Button Name="ShowPasswordButton" Click="ShowPasswordButtonEvent" Margin="200,51,0,0"  Style="{DynamicResource ShowPasswordButtonStyle}">
+        <Button Grid.Row="1" Name="ShowPasswordButton" Click="ShowPasswordButtonEvent" Margin="200,51,0,0"  Style="{DynamicResource ShowPasswordButtonStyle}">
             <Image Name="ShowPasswordImage" Style="{DynamicResource ShowPasswordImageStyle}"/>
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
@@ -40,9 +54,9 @@
         </Button>
 
         <!--Login button-->
-        <Button Name="LoginButton" Click="LoginButton_Click" Content="Login" Margin="0,180,100,0" Style="{DynamicResource Buttons}" />
+        <Button Grid.Row="1" Name="LoginButton" Click="LoginButton_Click" Content="Login" Margin="0,180,100,0" Style="{DynamicResource Buttons}" />
 
         <!--Register button-->
-        <Button Name="RegisterButton" Click="RegisterButton_Click" Content="Register" Margin="100,180,0,0" Style="{DynamicResource Buttons}" />
+        <Button Grid.Row="1" Name="RegisterButton" Click="RegisterButton_Click" Content="Register" Margin="100,180,0,0" Style="{DynamicResource Buttons}" />
     </Grid>
 </Page>

@@ -40,3 +40,5 @@ C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\An
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\XamlPages\RegisterPage.baml
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\ConfigFiles\App.g.cs
 C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\StyleSheets\XamlStyles.baml
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\XamlPages\ProfilePage.g.cs
+C:\Users\ricky\source\repos\Animelist-CSharp-Project\Animelist-CSharp-Project\Animelist-CSharp-Project\obj\Debug\XamlPages\ProfilePage.baml
